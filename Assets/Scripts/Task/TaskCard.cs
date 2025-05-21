@@ -66,7 +66,6 @@ public class TaskCard : MonoBehaviour
     public void InitInfo(TaskCardInfo info)
     {
         taskCardInfo = info;
-        ShowInfo();
     }
 
     public bool SetTaskCheck(GameObject slotObj)
@@ -80,11 +79,7 @@ public class TaskCard : MonoBehaviour
             slot.taskCard = this.gameObject;
             slot.isEmpty = false;
             isInSlot = true;
-            //设置当前物体的父物体为Slot并且隐藏
-            this.transform.SetParent(slotObj.transform);
-            this.gameObject.SetActive(false);
-
-            ShowInfo();
+            Destroy(gameObject);
             return true;
         }
         else
@@ -93,9 +88,4 @@ public class TaskCard : MonoBehaviour
         }
     }
 
-    //显示信息
-    public void ShowInfo()
-    {
-        
-    }
 }

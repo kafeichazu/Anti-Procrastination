@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System;
 using System.Threading.Tasks;
 
-public class ImageDrag : MonoBehaviour, IDragHandler, IEndDragHandler//, IDropHandler， IBeginDragHandler
+public class ImageDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerEnterHandler ,IPointerExitHandler //, IDropHandler， IBeginDragHandler
 {
     private Transform panel;      
     // Scroll View上的Scroll Rect组件
@@ -21,13 +21,22 @@ public class ImageDrag : MonoBehaviour, IDragHandler, IEndDragHandler//, IDropHa
         //注意面板中默认创建的ScrollView中间有空格
         scrollRect = panel.transform.Find("ScrollView").GetComponent<ScrollRect>();
     }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        GameManager.Instance.infoPanel.gameObject.SetActive(true);
+        GameManager.Instance.infoPanel.GetComponent<InfoPanel>().ShowInfo(taskCard.taskCardInfo);
+    }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        GameManager.Instance.infoPanel.gameObject.SetActive(false);
+    }
     public void OnDrag(PointerEventData eventData)
     {
         GameObject canvas = GameObject.Find("Canvas");
         transform.SetParent(canvas.transform);
         transform.SetAsLastSibling();
-        
+
         RectTransform rectTransform = this.GetComponent<RectTransform>();
         rectTransform.position = eventData.position;
     }
@@ -54,6 +63,7 @@ public class ImageDrag : MonoBehaviour, IDragHandler, IEndDragHandler//, IDropHa
         if (!isOverSlot || !haveSpace)
         {
             this.transform.SetParent(scrollRect.content);
+            this.transform.SetAsFirstSibling();
         }
         
         Debug.Log("--------拖拽子物体结束-----------");
