@@ -27,7 +27,7 @@ public class ScheduleManager : MonoBehaviour
 
     public AttributeManager attributeManager;
     public List<TimeSlot> arrangedDaySchedule = new List<TimeSlot>();
-    //public LogPanelManager logPanelManager;
+    public LogPanelManager logPanelManager;
 
     public void arrangeDayPlan(int index)
     {
@@ -95,35 +95,48 @@ public class ScheduleManager : MonoBehaviour
         Debug.Log($"已整理 DayPlan[{index}] 为 {arrangedDaySchedule.Count} 个任务段");
         foreach (TimeSlot task in arrangedDaySchedule)
         {
-            executeTimeSlot(task.successPoint, task.inputPoint);
+            string taskName = !string.IsNullOrEmpty(task.fixedTask) ? task.fixedTask : task.scheduledTask;
+            executeTimeSlot(taskName, task.successPoint, task.inputPoint);
         }
     }
 
-    public void executeTimeSlot(int successPoint, int inputPoint)
+    public void executeTimeSlot(string taskName, int successPoint, int inputPoint)
     {
         int total = 0;
-        string resultLog = "执行任务：结果为 [ ";
+        logPanelManager.AddLog("执行" + taskName + "任务，进行成功判定");
+        string resultLog = "骰出：[ ";
 
         for (int i = 0; i < inputPoint; i++)
         {
             int roll = Random.Range(0, 2);  // 0 或 1
             total += roll;
-            resultLog += roll + " ";
+            if (roll == 1)
+            {
+                resultLog += "正 ";
+            }
+            else
+            {
+                resultLog += "反 ";
+            }
         }
 
-        resultLog += "]，总和：" + total + "，成功需求：" + successPoint;
+        resultLog += "]，点数：" + total + "，成功需求：" + successPoint;
+        logPanelManager.AddLog(resultLog);
 
         if (total >= successPoint)
         {
-            resultLog += " → ✅ 成功！";
+            logPanelManager.AddLog("你没有拖延地完成了任务");
+            //resultLog += " → 成功！";
         }
         else
         {
-            resultLog += " → ❌ 失败！";
+            logPanelManager.AddLog("啊哦，你拖延了好久");
+            //resultLog += " → 失败！";
         }
 
-        Debug.Log(resultLog);
+        //Debug.Log(resultLog);
         //logPanelManager.AddLog(resultLog);
+        logPanelManager.AddLog("————————————————");
     }
 }
 
