@@ -2444,6 +2444,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   infoPanel: {fileID: 8914336204263786785}
+  taskCards: []
+  todayTaskCards: []
 --- !u!4 &453325458
 Transform:
   m_ObjectHideFlags: 0

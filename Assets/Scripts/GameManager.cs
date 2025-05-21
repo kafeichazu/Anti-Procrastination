@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -9,6 +10,11 @@ public class GameManager : MonoBehaviour
 
     //懒得写UIManager了，暂时用这个顶顶
     public GameObject infoPanel;
+
+    //维护一个未完成的任务卡片列表
+    public TaskCardInfo[] taskCards;
+    //今日已安排的任务卡片列表
+    public TaskCardInfo[] todayTaskCards;
     
     // 公共访问器
     public static GameManager Instance
@@ -59,41 +65,7 @@ public class GameManager : MonoBehaviour
         // 在这里添加所有需要的初始化代码
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
-    // 你可以在这里添加游戏管理需要的公共方法和属性
-    // 例如:
     
-    // 游戏状态
-    private bool _isPaused = false;
-    public bool IsPaused
-    {
-        get { return _isPaused; }
-    }
-    
-    // 暂停游戏
-    public void PauseGame()
-    {
-        _isPaused = true;
-        Time.timeScale = 0f;
-        Debug.Log("Game Paused");
-    }
-    
-    // 继续游戏
-    public void ResumeGame()
-    {
-        _isPaused = false;
-        Time.timeScale = 1f;
-        Debug.Log("Game Resumed");
-    }
 }
