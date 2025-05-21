@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
 
     //懒得写UIManager了，暂时用这个顶顶
     public GameObject infoPanel;
+    public GameObject Card;
+    //装任务卡片的父物体
+    public GameObject Content;
 
     //维护一个未完成的任务卡片列表
     public TaskCardInfo[] taskCards;

@@ -13,6 +13,9 @@ public struct TaskCardInfo
     [Tooltip("任务ID")]
     public int taskID;
 
+    [Tooltip("任务卡片颜色")]
+    public Color cardColor;
+
     [Tooltip("固定任务名字")]
     public string fixedTask;
 
@@ -44,10 +47,11 @@ public struct TaskCardInfo
     public int consumeEnergy;
 
     // 显式构造函数
-    public TaskCardInfo(int taskID = 0 ,string fixedTask = "", string scheduledTask = "", int timeBlockNum = 1,
+    public TaskCardInfo(Color cardColor, int taskID = 0, string fixedTask = "", string scheduledTask = "", int timeBlockNum = 1,
                        int successPoint = 0, int canAddMood = 0, int canAddEnergy = 0,
                        int consumeMood = 0, int consumeEnergy = 0)
     {
+        this.cardColor = cardColor;
         this.taskID = taskID;
         this.fixedTask = fixedTask;
         this.scheduledTask = scheduledTask;
