@@ -40,28 +40,20 @@ public class ImageDrag : MonoBehaviour, IDragHandler, IEndDragHandler//, IDropHa
         EventSystem.current.RaycastAll(eventData, results);
 
         bool isOverSlot = false;
+        bool haveSpace = false;
         foreach (RaycastResult result in results)
         {
             if (result.gameObject.CompareTag("Slot"))
             {
-                Debug.Log("1");
+                haveSpace = taskCard.SetTaskCheck(result.gameObject);
                 isOverSlot = true;
                 break;
             }
         }
 
-        if (!isOverSlot)
+        if (!isOverSlot || !haveSpace)
         {
-            Transform originalParent = scrollRect.transform.Find("Viewport/Content");
-            if (originalParent != null)
-            {
-                this.transform.SetParent(originalParent);
-                transform.SetAsFirstSibling();
-            }
-            else
-            {
-                Debug.LogWarning("Original parent 'Content' not found");
-            }
+            this.transform.SetParent(scrollRect.content);
         }
         
         Debug.Log("--------拖拽子物体结束-----------");

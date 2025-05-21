@@ -16,8 +16,8 @@ public struct TaskCardInfo
     [Tooltip("计划任务名字")]
     public string scheduledTask;
     
-    [Tooltip("是否是持续任务（连续好几个时间块）")]
-    public bool isContinue;
+    [Tooltip("持续任务的话连续几个时间块")]
+    public int timeBlockNum;
     
     [Tooltip("需要多少点才完成")]
     [Range(0, 10)]
@@ -40,13 +40,13 @@ public struct TaskCardInfo
     public int consumeEnergy;
 
     // 显式构造函数
-    public TaskCardInfo(string fixedTask = "", string scheduledTask = "", bool isContinue = false,
+    public TaskCardInfo(string fixedTask = "", string scheduledTask = "", int timeBlockNum = 1,
                        int successPoint = 0, int canAddMood = 0, int canAddEnergy = 0,
                        int consumeMood = 0, int consumeEnergy = 0)
     {
         this.fixedTask = fixedTask;
         this.scheduledTask = scheduledTask;
-        this.isContinue = isContinue;
+        this.timeBlockNum = timeBlockNum;
         this.successPoint = successPoint;
         this.canAddMood = canAddMood;
         this.canAddEnergy = canAddEnergy;
@@ -58,33 +58,39 @@ public struct TaskCardInfo
 public class TaskCard : MonoBehaviour
 //, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    private Canvas canvas;
-    private RectTransform rectTransform;
-    private Vector3 originalPosition;
-    private Transform originalParent;
-    private CanvasGroup canvasGroup;
 
     [SerializeField]
     public TaskCardInfo taskCardInfo;
+    public bool isInSlot = false;
 
-    void Awake()
-    {
-        rectTransform = GetComponent<RectTransform>();
-        canvas = GetComponentInParent<Canvas>();
-        canvasGroup = GetComponent<CanvasGroup>();
-
-        // 如果没有CanvasGroup组件，添加一个
-        if (canvasGroup == null)
-        {
-            canvasGroup = gameObject.AddComponent<CanvasGroup>();
-        }
-    }
-
-    //注入信息到Slot中
-    public void injectInfo(TaskCardInfo info)
+    public void InitInfo(TaskCardInfo info)
     {
         taskCardInfo = info;
         ShowInfo();
+    }
+
+    public bool SetTaskCheck(GameObject slotObj)
+    {
+        Slot slot = slotObj.GetComponent<Slot>();
+        //TODO 还没添加连续任务块处理
+        if (slot.isEmpty)
+        {
+            //注入信息到Slot中
+            slot.taskCardInfo = taskCardInfo;
+            slot.taskCard = this.gameObject;
+            slot.isEmpty = false;
+            isInSlot = true;
+            //设置当前物体的父物体为Slot并且隐藏
+            this.transform.SetParent(slotObj.transform);
+            this.gameObject.SetActive(false);
+
+            ShowInfo();
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     //显示信息
