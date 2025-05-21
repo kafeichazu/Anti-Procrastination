@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: LevelDatabase
   m_EditorClassIdentifier: 
   levelData:
-  - levelEnergy: 0
-    levelMood: 0
+  - levelEnergy: 1
+    levelMood: 1
     taskCards: 00000000

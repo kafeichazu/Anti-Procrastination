@@ -68,4 +68,16 @@ public struct TaskCardInfo
 public class TaskData : ScriptableObject
 {
     public List<TaskCardInfo> taskPools = new List<TaskCardInfo>();
+
+    public TaskCardInfo GetTaskById(int id)
+    {
+        foreach (var task in taskPools)
+        {
+            if (task.taskID == id)
+                return task;
+        }
+        
+        Debug.LogWarning($"Task with ID {id} not found in the task pool.");
+        return new TaskCardInfo(Color.white);
+    }
 }
