@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskPools:
   - taskID: 0
-    cardColor: {r: 0.90943396, g: 0.29342112, b: 0.29342112, a: 0}
+    cardColor: {r: 0.93207544, g: 0.34996784, b: 0.34996784, a: 0}
     fixedTask: 
     scheduledTask: 
     timeBlockNum: 0

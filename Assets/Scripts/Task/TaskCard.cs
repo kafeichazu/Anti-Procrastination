@@ -33,8 +33,8 @@ public class TaskCard : MonoBehaviour
         if (slot.isEmpty)
         {
             //注入信息到Slot中
-            slot.taskCardInfo = taskCardInfo;
-            slot.taskCard = this.gameObject;
+            slot.InsertCard(taskCardInfo);
+            GameManager.Instance.infoPanel.gameObject.SetActive(false);
             slot.isEmpty = false;
             isInSlot = true;
             Destroy(gameObject);

@@ -24,8 +24,10 @@ public class GameManager : MonoBehaviour
     public List<TaskCardInfo> taskCards;
     //今日已安排的任务卡片列表
     public TaskCardInfo[] todayTaskCards;
+    //今日已安排的任务
+    public List<TimeSlot> todaySlots;
     public int level = 1;
-    
+
     // 公共访问器
     public static GameManager Instance
     {
@@ -62,7 +64,7 @@ public class GameManager : MonoBehaviour
 
         // 初始化游戏管理器
         InitGameManager();
-        
+
         EnterLevel(level);
     }
 
@@ -74,19 +76,36 @@ public class GameManager : MonoBehaviour
 
         foreach (int taskId in ldata.taskCards)
         {
-            TaskCardInfo taskInfo = taskDataBase.GetTaskById(taskId);
-            GameObject card = Instantiate(Card, Content.transform);
-            TaskCard taskCard = card.GetComponent<TaskCard>();
-            if (taskCard != null)
-            {
-                taskCard.InitInfo(taskInfo);
-            }
-            // Add the task to our level tasks list
-            taskCards.Add(taskInfo);
+            InstantiateTaskCardById(taskId);
         }
-
     }
-    
+
+    // 实例化任务卡片
+    public void InstantiateTaskCard(TaskCardInfo taskInfo)
+    {
+        GameObject card = Instantiate(Card, Content.transform);
+        TaskCard taskCard = card.GetComponent<TaskCard>();
+        if (taskCard != null)
+        {
+            taskCard.InitInfo(taskInfo);
+        }
+        taskCards.Add(taskInfo);
+    }
+
+    public void InstantiateTaskCardById(int taskId)
+    {
+        TaskCardInfo taskInfo = taskDataBase.GetTaskById(taskId);
+        GameObject card = Instantiate(Card, Content.transform);
+        TaskCard taskCard = card.GetComponent<TaskCard>();
+        if (taskCard != null)
+        {
+            taskCard.InitInfo(taskInfo);
+        }
+        taskCards.Add(taskInfo);
+    }
+
+
+
     // 初始化游戏管理器的方法
     private void InitGameManager()
     {
@@ -94,6 +113,17 @@ public class GameManager : MonoBehaviour
     }
 
 
-    
-    
+    /// <summary>
+    /// 显示任务信息面板
+    /// </summary>
+    public void ShowInfo(TaskCardInfo taskInfo)
+    {
+        infoPanel.SetActive(true);
+        infoPanel.GetComponent<InfoPanel>().ShowInfo(taskInfo);
+    }
+    //关闭任务信息面板
+    public void CloseInfo()
+    {
+        infoPanel.SetActive(false);
+    }
 }

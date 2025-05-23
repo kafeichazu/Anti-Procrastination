@@ -21,16 +21,16 @@ public class ImageDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerE
         //注意面板中默认创建的ScrollView中间有空格
         scrollRect = panel.transform.Find("ScrollView").GetComponent<ScrollRect>();
     }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        GameManager.Instance.infoPanel.gameObject.SetActive(true);
-        GameManager.Instance.infoPanel.GetComponent<InfoPanel>().ShowInfo(taskCard.taskCardInfo);
+        GameManager.Instance.ShowInfo(taskCard.taskCardInfo);
     }
-
     public void OnPointerExit(PointerEventData eventData)
     {
-        GameManager.Instance.infoPanel.gameObject.SetActive(false);
+        GameManager.Instance.CloseInfo();
     }
+
     public void OnDrag(PointerEventData eventData)
     {
         GameObject canvas = GameObject.Find("Canvas");
