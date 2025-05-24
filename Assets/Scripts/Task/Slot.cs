@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -37,8 +38,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
     public void InsertCardArray(TaskCardInfo info, int moodDiceNum = 0, int energyDiceNum = 0)
     {
         TimeSlot timeSlot = new TimeSlot();
-        timeSlot.fixedTask = info.fixedTaskName;
-        timeSlot.scheduledTask = info.scheduledTaskName;
+        //timeSlot.fixedTask = info.fixedTaskName;
+        //timeSlot.scheduledTask = info.scheduledTaskName;
         timeSlot.isContinue = info.timeBlockNum > 1;
         timeSlot.successPoint = info.successPoint;
         timeSlot.consumeMood = moodDiceNum == 0 ? info.consumeMood : moodDiceNum;
