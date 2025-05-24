@@ -87,7 +87,7 @@ public class InfoPanel : MonoBehaviour
         {
             moodSubButton.gameObject.SetActive(false);
         }
-        
+
         if (energyDiceNum > taskCardInfo.consumeEnergy)
         {
             energySubButton.gameObject.SetActive(true);
@@ -96,6 +96,12 @@ public class InfoPanel : MonoBehaviour
         {
             energySubButton.gameObject.SetActive(false);
         }
+    }
+
+    public void Apply()
+    {
+        gameObject.SetActive(false);
+        //填充信息到本日任务列表中
     }
 
 }

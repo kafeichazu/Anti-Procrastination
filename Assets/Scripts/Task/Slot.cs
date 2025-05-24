@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class Slot : MonoBehaviour, IPointerClickHandler
+public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, IPointerExitHandler
 {
     public int day;
     public int slotID;
@@ -16,6 +16,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     public bool isEmpty = true;
 
     private Image slotImage;
+    private bool isEditing = false;
     private void Awake()
     {
         slotImage = GetComponent<Image>();
@@ -33,14 +34,18 @@ public class Slot : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right && !isEmpty)
+        if (isEmpty) return;
+        if (eventData.button == PointerEventData.InputButton.Right)
         {
             GameManager.Instance.InstantiateTaskCard(taskCardInfo);
             isEmpty = true;
             taskCardInfo = new TaskCardInfo();
+            slotImage.color = Color.white;
         }
-        else if (eventData.button == PointerEventData.InputButton.Left && !isEmpty)
+        else if (eventData.button == PointerEventData.InputButton.Left)
         {
+            Debug.LogWarning("123");
+            isEditing = true;
             ShowInfo();
         }
 
@@ -52,14 +57,23 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         //显示任务信息面板，并且可以调整骰子
         infoPanel.SetActive(true);
         infoPanel.GetComponent<InfoPanel>().ShowInfo(taskCardInfo);
-
     }
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (!isEmpty)
         {
-            //TODO 改成自己的信息面板，而不是任务卡信息显示的那个
+            ShowInfo();
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (isEmpty) return;
+        if (!isEditing)
+        {
+            infoPanel.SetActive(false);
         }
     }
 }
