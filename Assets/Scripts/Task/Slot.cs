@@ -30,6 +30,22 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
         Color newColor = taskCardInfo.cardColor;
         newColor.a = 1f;
         slotImage.color = newColor;
+        InsertCardArray(taskCardInfo);
+    }
+
+    //将任务卡片信息插入到任务卡片数组中
+    public void InsertCardArray(TaskCardInfo info, int moodDiceNum = 0, int energyDiceNum = 0)
+    {
+        TimeSlot timeSlot = new TimeSlot();
+        timeSlot.fixedTask = info.fixedTaskName;
+        timeSlot.scheduledTask = info.scheduledTaskName;
+        timeSlot.isContinue = info.timeBlockNum > 1;
+        timeSlot.successPoint = info.successPoint;
+        timeSlot.consumeMood = moodDiceNum == 0 ? info.consumeMood : moodDiceNum;
+        timeSlot.consumeEnergy = energyDiceNum == 0 ? info.consumeEnergy : energyDiceNum;
+        timeSlot.inputPoint = timeSlot.consumeMood + timeSlot.consumeMood;
+
+        GameManager.Instance.todayTaskCards[slotID] = timeSlot;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -44,8 +60,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
         }
         else if (eventData.button == PointerEventData.InputButton.Left)
         {
-            Debug.LogWarning("123");
             isEditing = true;
+            infoPanel.GetComponent<InfoPanel>().slot = this;
             ShowInfo();
         }
 

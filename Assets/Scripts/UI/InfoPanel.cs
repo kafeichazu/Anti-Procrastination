@@ -20,6 +20,8 @@ public class InfoPanel : MonoBehaviour
     //public Button energyAddButton;
     public Button energySubButton;
 
+    [HideInInspector]
+    public Slot slot;
     public int totalDiceNum;
     public int moodDiceNum;
     public int energyDiceNum;
@@ -28,7 +30,7 @@ public class InfoPanel : MonoBehaviour
     {
         this.taskCardInfo = taskCardInfo;
         // 显示任务信息
-        taskName.text = taskCardInfo.fixedTask;
+        taskName.text = taskCardInfo.fixedTaskName;
         timeRequest.text = taskCardInfo.timeBlockNum.ToString();
         passPoint.text = taskCardInfo.successPoint.ToString();
         //taskDescription.text = taskCardInfo.scheduledTask;
@@ -102,6 +104,7 @@ public class InfoPanel : MonoBehaviour
     {
         gameObject.SetActive(false);
         //填充信息到本日任务列表中
+        slot.InsertCardArray(taskCardInfo, moodDiceNum, energyDiceNum);
     }
 
 }

@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     // 单例实例
     private static GameManager _instance;
+    public AttributeManager attributeManager;
     public GameObject gameSlots;
 
     //懒得写UIManager了，暂时用这个顶顶
@@ -24,9 +25,9 @@ public class GameManager : MonoBehaviour
 
     //维护一个未完成的任务卡片列表
     public List<TaskCardInfo> taskCards;
+    //今日已安排的任务卡片数组
+    public TimeSlot[] todayTaskCards;
     //今日已安排的任务卡片列表
-    public TaskCardInfo[] todayTaskCards;
-    //今日已安排的任务
     public List<TimeSlot> todaySlots;
     public int level = 1;
 
@@ -61,6 +62,10 @@ public class GameManager : MonoBehaviour
         // 设置实例
         _instance = this;
 
+        todayTaskCards = new TimeSlot[12];
+        todaySlots = new List<TimeSlot>();
+
+
         // 防止场景切换时被销毁
         DontDestroyOnLoad(gameObject);
 
@@ -75,6 +80,8 @@ public class GameManager : MonoBehaviour
         Debug.Log($"Entering level {level}...");
         var ldata = levelDataBase.levelData[level - 1];
         //List<TaskCardInfo> levelTasks = new List<TaskCardInfo>();
+        attributeManager.totalEnergy += ldata.levelEnergy;
+        attributeManager.totalMood += ldata.levelMood;
 
         foreach (int taskId in ldata.taskCards)
         {
@@ -115,18 +122,18 @@ public class GameManager : MonoBehaviour
         InitSlotID();
     }
 
-    
+
     private void InitSlotID()
     {
         for (int i = 0; i < gameSlots.transform.childCount; i++)
         {
-            GameObject daySlots = gameSlots.transform.GetChild(i).gameObject;;
+            GameObject daySlots = gameSlots.transform.GetChild(i).gameObject; ;
             for (int j = 0; j < daySlots.transform.childCount; j++)
             {
                 GameObject gameSlot = daySlots.transform.GetChild(j).gameObject;
                 gameSlot.GetComponent<Slot>().day = i;
                 gameSlot.GetComponent<Slot>().slotID = j;
-                gameSlot.gameObject.name = i + "_" +j;
+                gameSlot.gameObject.name = i + "_" + j;
             }
             daySlots.gameObject.name = i.ToString();
         }
@@ -145,5 +152,17 @@ public class GameManager : MonoBehaviour
     public void CloseInfo()
     {
         infoPanel.SetActive(false);
+    }
+
+    public void UpdateTodayPlan()
+    {
+        for (int i = 0; i < todayTaskCards.Length; i++)
+        {
+            if (todayTaskCards[i] != null)
+            {
+                todaySlots.Add(todayTaskCards[i]);
+            }
+        }
+        Debug.Log($"今日安排的任务有{todaySlots.Count}个");
     }
 }

@@ -17,10 +17,10 @@ public struct TaskCardInfo
     public Color cardColor;
 
     [Tooltip("固定任务名字")]
-    public string fixedTask;
+    public string fixedTaskName;
 
     [Tooltip("计划任务名字")]
-    public string scheduledTask;
+    public string scheduledTaskName;
 
     [Tooltip("持续任务的话连续几个时间块")]
     [Range(1, 12)]
@@ -51,8 +51,8 @@ public struct TaskCardInfo
     {
         this.cardColor = cardColor;
         this.taskID = taskID;
-        this.fixedTask = fixedTask;
-        this.scheduledTask = scheduledTask;
+        this.fixedTaskName = fixedTask;
+        this.scheduledTaskName = scheduledTask;
         this.timeBlockNum = timeBlockNum;
         this.successPoint = successPoint;
         this.canAddMood = true;
