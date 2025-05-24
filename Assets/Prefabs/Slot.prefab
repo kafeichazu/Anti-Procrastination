@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   taskCardInfo:
+    taskID: 0
+    cardColor: {r: 0, g: 0, b: 0, a: 0}
     fixedTask: 
     scheduledTask: 
     timeBlockNum: 0
@@ -97,5 +99,4 @@ MonoBehaviour:
     canAddEnergy: 0
     consumeMood: 0
     consumeEnergy: 0
-  taskCard: {fileID: 0}
   isEmpty: 1
