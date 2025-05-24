@@ -40,6 +40,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
         TimeSlot timeSlot = new TimeSlot();
         //timeSlot.fixedTask = info.fixedTaskName;
         //timeSlot.scheduledTask = info.scheduledTaskName;
+        timeSlot.taskID = info.taskID;
+        timeSlot.type = info.taskType.ToString();
+        timeSlot.taskName = info.fixedTaskName == "" ? info.scheduledTaskName : info.fixedTaskName;
+        
         timeSlot.isContinue = info.timeBlockNum > 1;
         timeSlot.successPoint = info.successPoint;
         timeSlot.consumeMood = moodDiceNum == 0 ? info.consumeMood : moodDiceNum;
@@ -54,6 +58,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
         if (isEmpty) return;
         if (eventData.button == PointerEventData.InputButton.Right)
         {
+            isEditing = false;
+            infoPanel.SetActive(false);
             GameManager.Instance.InstantiateTaskCard(taskCardInfo);
             isEmpty = true;
             taskCardInfo = new TaskCardInfo();

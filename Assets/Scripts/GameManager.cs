@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     // 单例实例
     private static GameManager _instance;
     public AttributeManager attributeManager;
+    public ScheduleManager scheduleManager;
     public GameObject gameSlots;
 
     //懒得写UIManager了，暂时用这个顶顶
@@ -27,8 +28,6 @@ public class GameManager : MonoBehaviour
     public List<TaskCardInfo> taskCards;
     //今日已安排的任务卡片数组
     public TimeSlot[] todayTaskCards;
-    //今日已安排的任务卡片列表
-    public List<TimeSlot> todaySlots;
     public int level = 1;
 
     // 公共访问器
@@ -63,8 +62,11 @@ public class GameManager : MonoBehaviour
         _instance = this;
 
         todayTaskCards = new TimeSlot[12];
-        todaySlots = new List<TimeSlot>();
-
+        for (int i = 0; i < todayTaskCards.Length; i++)
+        {
+            todayTaskCards[i] = new TimeSlot();
+            Debug.Log($"{todayTaskCards[i].taskName} initialized.");
+        }
 
         // 防止场景切换时被销毁
         DontDestroyOnLoad(gameObject);
@@ -72,7 +74,7 @@ public class GameManager : MonoBehaviour
         // 初始化游戏管理器
         InitGameManager();
 
-        EnterLevel(level);
+        EnterLevel(1);
     }
 
     public void EnterLevel(int level)
@@ -154,15 +156,11 @@ public class GameManager : MonoBehaviour
         infoPanel.SetActive(false);
     }
 
-    public void UpdateTodayPlan()
+    public void StartToday()
     {
-        for (int i = 0; i < todayTaskCards.Length; i++)
-        {
-            if (todayTaskCards[i] != null)
-            {
-                todaySlots.Add(todayTaskCards[i]);
-            }
-        }
-        Debug.Log($"今日安排的任务有{todaySlots.Count}个");
+        Debug.Log("today Plan Num " + todayTaskCards.Length);
+        scheduleManager.UpdateDayTasks(todayTaskCards, level - 1);
+        level++;
     }
+
 }

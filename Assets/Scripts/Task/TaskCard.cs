@@ -30,7 +30,7 @@ public class TaskCard : MonoBehaviour
     {
         Slot slot = slotObj.GetComponent<Slot>();
         //TODO 还没添加连续任务块处理
-        if (slot.isEmpty)
+        if (slot.isEmpty && slot.day == (GameManager.Instance.level - 1))
         {
             //注入信息到Slot中
             slot.InsertCard(taskCardInfo);

@@ -3789,7 +3789,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 453325457}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: UpdateTodayPlan
+        m_MethodName: StartToday
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7918,8 +7918,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u4E0B\u4E00\u4EFB\u52A1"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 46601f048c0494b91a5526e922fdef58, type: 2}
-  m_sharedMaterial: {fileID: 4535349394114919868, guid: 46601f048c0494b91a5526e922fdef58, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

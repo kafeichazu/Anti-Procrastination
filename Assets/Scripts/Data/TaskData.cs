@@ -2,6 +2,57 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// 任务类型枚举
+/// </summary>
+public enum TaskType
+{
+    Fixed,
+    Love,
+    Scheduled
+}
+
+/// <summary>
+/// 任务类型扩展方法
+/// </summary>
+public static class TaskTypeExtensions
+{
+    /// <summary>
+    /// 将任务类型枚举转换为字符串
+    /// </summary>
+    public static string ToString(this TaskType taskType)
+    {
+        switch (taskType)
+        {
+            case TaskType.Fixed:
+                return "fixed";
+            case TaskType.Love:
+                return "love";
+            case TaskType.Scheduled:
+                return "scheduled";
+            default:
+                return string.Empty;
+        }
+    }
+
+    /// <summary>
+    /// 从字符串解析任务类型枚举
+    /// </summary>
+    public static TaskType ParseTaskType(string typeString)
+    {
+        switch (typeString.ToLower())
+        {
+            case "fixed":
+                return TaskType.Fixed;
+            case "love":
+                return TaskType.Love;
+            case "scheduled":
+                return TaskType.Scheduled;
+            default:
+                return TaskType.Fixed;
+        }
+    }
+}
 
 /// <summary>
 /// 任务卡片信息
@@ -12,6 +63,14 @@ public struct TaskCardInfo
 {
     [Tooltip("任务ID")]
     public int taskID;
+
+    [Tooltip("任务类型")]
+    public TaskType taskType; // 任务类型: "fixed"、"love"、"scheduled"
+
+    [Tooltip("任务时间（天）")]
+    public int day;
+    [Tooltip("任务时间（时间段）")]
+    public int timeBlockIndex;
 
     [Tooltip("任务卡片颜色")]
     public Color cardColor;
@@ -51,6 +110,9 @@ public struct TaskCardInfo
     {
         this.cardColor = cardColor;
         this.taskID = taskID;
+        this.taskType = TaskType.Scheduled;
+        this.day = 0;
+        this.timeBlockIndex = 0;
         this.fixedTaskName = fixedTask;
         this.scheduledTaskName = scheduledTask;
         this.timeBlockNum = timeBlockNum;
