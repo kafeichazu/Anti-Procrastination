@@ -1,19 +1,101 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InfoPanel : MonoBehaviour
 {
+    public TaskCardInfo taskCardInfo;
+    public TextMeshProUGUI taskName;
+    public TextMeshProUGUI timeRequest;
+    public TextMeshProUGUI passPoint;
+    public TextMeshProUGUI taskDescription;
+    public TextMeshProUGUI moodNum;
+    public TextMeshProUGUI energyNum;
+
+    //public Button moodAddButton;
+    public Button moodSubButton;
+    //public Button energyAddButton;
+    public Button energySubButton;
+
+    public int totalDiceNum;
+    public int moodDiceNum;
+    public int energyDiceNum;
+
     public void ShowInfo(TaskCardInfo taskCardInfo)
     {
+        this.taskCardInfo = taskCardInfo;
         // 显示任务信息
-        Debug.Log($"Fixed Task: {taskCardInfo.fixedTask}");
-        Debug.Log($"Scheduled Task: {taskCardInfo.scheduledTask}");
-        Debug.Log($"Time Block Number: {taskCardInfo.timeBlockNum}");
-        Debug.Log($"Success Point: {taskCardInfo.successPoint}");
-        Debug.Log($"Can Add Mood: {taskCardInfo.canAddMood}");
-        Debug.Log($"Can Add Energy: {taskCardInfo.canAddEnergy}");
-        Debug.Log($"Consume Mood: {taskCardInfo.consumeMood}");
-        Debug.Log($"Consume Energy: {taskCardInfo.consumeEnergy}");
+        taskName.text = taskCardInfo.fixedTask;
+        timeRequest.text = taskCardInfo.timeBlockNum.ToString();
+        passPoint.text = taskCardInfo.successPoint.ToString();
+        //taskDescription.text = taskCardInfo.scheduledTask;
+        moodNum.text = taskCardInfo.consumeMood.ToString();
+        energyNum.text = taskCardInfo.consumeEnergy.ToString();
+
+        //使用量默认为推荐
+        moodDiceNum = taskCardInfo.consumeMood;
+        energyDiceNum = taskCardInfo.consumeEnergy;
+        totalDiceNum = moodDiceNum + energyDiceNum;
     }
+
+    public void IncreaseMood()
+    {
+        moodDiceNum++;
+        totalDiceNum++;
+        moodNum.text = moodDiceNum.ToString();
+        RefreshButton();
+    }
+    public void DecreaseMood()
+    {
+        if (moodDiceNum > taskCardInfo.consumeMood)
+        {
+            moodDiceNum--;
+            totalDiceNum--;
+            moodNum.text = moodDiceNum.ToString();
+        }
+        RefreshButton();
+    }
+
+    public void IncreaseEnergy()
+    {
+        energyDiceNum++;
+        totalDiceNum++;
+        energyNum.text = energyDiceNum.ToString();
+        RefreshButton();
+    }
+    public void DecreaseEnergy()
+    {
+        if (energyDiceNum > taskCardInfo.consumeEnergy)
+        {
+            energyDiceNum--;
+            totalDiceNum--;
+            energyNum.text = energyDiceNum.ToString();
+        }
+        RefreshButton();
+    }
+
+    public void RefreshButton()
+    {
+        if (moodDiceNum > taskCardInfo.consumeMood)
+        {
+            moodSubButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            moodSubButton.gameObject.SetActive(false);
+        }
+        
+        if (energyDiceNum > taskCardInfo.consumeEnergy)
+        {
+            energySubButton.gameObject.SetActive(true);
+        }
+        else
+        {
+            energySubButton.gameObject.SetActive(false);
+        }
+    }
+
 }

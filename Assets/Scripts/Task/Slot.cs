@@ -6,7 +6,11 @@ using UnityEngine.UI;
 
 public class Slot : MonoBehaviour, IPointerClickHandler
 {
+    public int day;
+    public int slotID;
+
     public TaskCardInfo taskCardInfo;
+    public GameObject infoPanel;
     //public GameObject taskCardPrefab;
     //public GameObject taskCard;
     public bool isEmpty = true;
@@ -15,6 +19,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     private void Awake()
     {
         slotImage = GetComponent<Image>();
+        infoPanel = GameManager.Instance.slotInfoPanel;
     }
 
     public void InsertCard(TaskCardInfo info)
@@ -25,7 +30,6 @@ public class Slot : MonoBehaviour, IPointerClickHandler
         newColor.a = 1f;
         slotImage.color = newColor;
     }
-
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -46,6 +50,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler
     public void ShowInfo()
     {
         //显示任务信息面板，并且可以调整骰子
+        infoPanel.SetActive(true);
+        infoPanel.GetComponent<InfoPanel>().ShowInfo(taskCardInfo);
 
     }
 

@@ -31,12 +31,10 @@ public struct TaskCardInfo
     public int successPoint;
 
     [Tooltip("能否添加心情骰子")]
-    [Range(0, 5)]
-    public int canAddMood;
+    public bool canAddMood;
 
     [Tooltip("能否添加精力骰子")]
-    [Range(0, 5)]
-    public int canAddEnergy;
+    public bool canAddEnergy;
 
     [Tooltip("消耗多少心情")]
     [Range(0, 10)]
@@ -48,7 +46,7 @@ public struct TaskCardInfo
 
     // 显式构造函数
     public TaskCardInfo(Color cardColor, int taskID = 0, string fixedTask = "", string scheduledTask = "", int timeBlockNum = 1,
-                       int successPoint = 0, int canAddMood = 0, int canAddEnergy = 0,
+                       int successPoint = 0,
                        int consumeMood = 0, int consumeEnergy = 0)
     {
         this.cardColor = cardColor;
@@ -57,8 +55,8 @@ public struct TaskCardInfo
         this.scheduledTask = scheduledTask;
         this.timeBlockNum = timeBlockNum;
         this.successPoint = successPoint;
-        this.canAddMood = canAddMood;
-        this.canAddEnergy = canAddEnergy;
+        this.canAddMood = true;
+        this.canAddEnergy = true;
         this.consumeMood = consumeMood;
         this.consumeEnergy = consumeEnergy;
     }

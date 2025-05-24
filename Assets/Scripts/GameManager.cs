@@ -7,9 +7,11 @@ public class GameManager : MonoBehaviour
 {
     // 单例实例
     private static GameManager _instance;
+    public GameObject gameSlots;
 
     //懒得写UIManager了，暂时用这个顶顶
     public GameObject infoPanel;
+    public GameObject slotInfoPanel;
     public GameObject Card;
     //装任务卡片的父物体
     public GameObject Content;
@@ -110,6 +112,24 @@ public class GameManager : MonoBehaviour
     private void InitGameManager()
     {
         Debug.Log("GameManager initialized!");
+        InitSlotID();
+    }
+
+    
+    private void InitSlotID()
+    {
+        for (int i = 0; i < gameSlots.transform.childCount; i++)
+        {
+            GameObject daySlots = gameSlots.transform.GetChild(i).gameObject;;
+            for (int j = 0; j < daySlots.transform.childCount; j++)
+            {
+                GameObject gameSlot = daySlots.transform.GetChild(j).gameObject;
+                gameSlot.GetComponent<Slot>().day = i;
+                gameSlot.GetComponent<Slot>().slotID = j;
+                gameSlot.gameObject.name = i + "_" +j;
+            }
+            daySlots.gameObject.name = i.ToString();
+        }
     }
 
 
