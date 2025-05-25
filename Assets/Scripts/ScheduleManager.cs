@@ -153,6 +153,7 @@ public class ScheduleManager : MonoBehaviour
 
             if (currentExecuteIndex >= arrangedDaySchedule.Count)
             {
+                GameManager.Instance.EnterLevel(GameManager.Instance.level);
                 Debug.Log("所有任务已执行完毕！");
                 if (executeButton != null)
                     executeButton.interactable = false;  // 禁用按钮
@@ -186,17 +187,17 @@ public class ScheduleManager : MonoBehaviour
 
         if (total >= successPoint)
         {
-            if (taskType == "fixed" || taskType == "scheduled")
+            if (taskType == "Fixed" || taskType == "Scheduled")
             {
                 logPanelManager.AddLog("你没有拖延地完成了任务！");
                 logPanelManager.AddLog("获得了" + gainMood + "点心情和" + gainEnergy + "点精力！");
                 AttributeManager.Instance.Consume(-gainMood, -gainEnergy);
-                if (taskType == "scheduled")
+                if (taskType == "Scheduled")
                 {
                     AttributeManager.Instance.successedScheduleTask += 1;
                 }
             }
-            else if (taskType == "love")
+            else if (taskType == "Love")
             {
                 logPanelManager.AddLog("你来啦！小美和你相处很开心！");
                 logPanelManager.AddLog("获得了" + gainMood + "点心情和" + gainEnergy + "点精力！");
@@ -206,7 +207,7 @@ public class ScheduleManager : MonoBehaviour
         }
         else
         {
-            if (taskType == "fixed")
+            if (taskType == "Fixed")
             {
                 logPanelManager.AddLog("呜呜，虽然勉勉强强完成了，但你耗费了更多的心情和精力");
                 //1.2倍
@@ -214,12 +215,12 @@ public class ScheduleManager : MonoBehaviour
                 int moreConsumedEnergy = Mathf.CeilToInt(consumeEnergy * 0.2f);
                 AttributeManager.Instance.Consume(moreConsumedMood, moreConsumedEnergy);
             }
-            else if (taskType == "scheduled")
+            else if (taskType == "Scheduled")
             {
                 GameManager.Instance.InstantiateTaskCardById(taskID);
                 logPanelManager.AddLog("啊哦，这个任务完成不了，重新安排时间吧");
             }
-            else if (taskType == "love")
+            else if (taskType == "Love")
             {
                 logPanelManager.AddLog("你在做什么啊，小美好伤心！！");
             }

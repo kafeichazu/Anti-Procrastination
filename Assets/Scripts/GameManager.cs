@@ -216,7 +216,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("today Plan Num " + todayTaskCards.Length);
         scheduleManager.UpdateDayTasks(todayTaskCards, level - 1);
         level++;
-        EnterLevel(level);
+        //EnterLevel(level);
     }
 
     public bool SetTaskCheck(Slot slot, TaskCardInfo taskCardInfo, bool isInit = false, bool canEdit = true)

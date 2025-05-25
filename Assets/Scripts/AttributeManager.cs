@@ -1,11 +1,13 @@
 using UnityEngine;
+using TMPro;
 
 public class AttributeManager : MonoBehaviour
 {
     public static AttributeManager Instance { get; private set; }
-
-    public int totalMood = 100;
-    public int totalEnergy = 100;
+    public TextMeshProUGUI moodTMP;
+    public TextMeshProUGUI energyTMP;
+    public int totalMood = 10;
+    public int totalEnergy = 10;
 
     public int successedScheduleTask = 0;
     public int successedLoveTask = 0;
@@ -32,5 +34,7 @@ public class AttributeManager : MonoBehaviour
         totalEnergy -= energy;
         totalMood = Mathf.Max(totalMood, 0);
         totalEnergy = Mathf.Max(totalEnergy, 0);
+        moodTMP.text = totalMood.ToString();
+        energyTMP.text = totalEnergy.ToString();
     }
 }
