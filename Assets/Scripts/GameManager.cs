@@ -135,15 +135,16 @@ public class GameManager : MonoBehaviour
 
     public void InitFixedTasks()
     {
-        // for (int i = 0; i < fixedDataBase.levelData.Length; i++)
-        // {
-        //     LevelFixedTasks levelFixedTasks = fixedDataBase.levelFixedTasks[i];
-        //     foreach (int taskId in levelFixedTasks.taskCards)
-        //     {
-        //         TaskCardInfo taskInfo = taskDataBase.GetTaskById(taskId);
-        //         InstantiateTaskCard(taskInfo);
-        //     }
-        // }
+        for (int i = 0; i < 7; i++)
+        {
+            var levelFixedTasks = fixedDataBase.levelData[i];
+            foreach (var task in levelFixedTasks.taskInOneDay)
+            {
+                TaskCardInfo taskInfo = taskDataBase.GetTaskById(task.taskCardID);
+                InstantiateTaskCard(taskInfo);
+            }
+            
+        }
     }
 
     public void InitLoveTasks()

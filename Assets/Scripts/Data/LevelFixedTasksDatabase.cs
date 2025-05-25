@@ -10,12 +10,12 @@ public class LevelFixedTasksDatabase : ScriptableObject
     {
         //public int Day;
         public int slotID;
-        public int taskCards;// 任务卡片ID列表
+        public int taskCardID;// 任务卡片ID列表
     }
     [System.Serializable]
     public class oneLevelFixedTasksData
     {
-        public List<oneFixedTasksData> taskCards;// 任务卡片ID列表
+        public List<oneFixedTasksData> taskInOneDay;// 任务卡片ID列表
     }
     public List<oneLevelFixedTasksData> levelData = new List<oneLevelFixedTasksData>();
 }
