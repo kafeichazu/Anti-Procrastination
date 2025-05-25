@@ -25,7 +25,8 @@ public class GameManager : MonoBehaviour
     public LevelData levelDataBase;
     //固定任务数据
     public LevelFixedTasksDatabase fixedDataBase;
-
+    //恋爱任务列表
+    public int[][] loveTasks;
 
     //维护一个未完成的任务卡片列表
     public List<TaskCardInfo> taskCards;
@@ -91,6 +92,16 @@ public class GameManager : MonoBehaviour
         {
             InstantiateTaskCardById(taskId);
         }
+
+        var oneDayLoveTask = loveTasks[level - 1];
+        for (int j = 0; j < oneDayLoveTask.Length; j++)
+        {
+            if (oneDayLoveTask[j] != 6184)
+            {
+                TaskCardInfo taskInfo = taskDataBase.GetTaskById(oneDayLoveTask[j]);
+                bool setCheck = SetTaskCheck(slots[level - 1][j], taskInfo, true, false);
+            }
+        }
     }
 
     // 实例化任务卡片
@@ -129,8 +140,8 @@ public class GameManager : MonoBehaviour
             slots[i] = new Slot[12];
         }
         InitSlotID();
-        InitFixedTasks();
         InitLoveTasks();
+        InitFixedTasks();
     }
 
     public void InitFixedTasks()
@@ -140,15 +151,31 @@ public class GameManager : MonoBehaviour
             var levelFixedTasks = fixedDataBase.levelData[i];
             foreach (var task in levelFixedTasks.taskInOneDay)
             {
+                Debug.Log($"LevelFixedTasks Num {i}{levelFixedTasks.taskInOneDay.Count}");
                 TaskCardInfo taskInfo = taskDataBase.GetTaskById(task.taskCardID);
+                if (taskInfo.taskType == TaskType.Love)
+                {
+                    loveTasks[i][task.slotID] = task.taskCardID;
+                }
+                else
+                {
+                    bool setCheck = SetTaskCheck(slots[i][task.slotID], taskInfo, true, false);
+                }
             }
-
         }
     }
 
     public void InitLoveTasks()
     {
-
+        loveTasks = new int[7][];
+        for (int i = 0; i < 7; i++)
+        {
+            loveTasks[i] = new int[12];
+            for (int j = 0; j < 12; j++)
+            {
+                loveTasks[i][j] = 6184;
+            }
+        }
     }
 
     private void InitSlotID()
@@ -189,12 +216,13 @@ public class GameManager : MonoBehaviour
         Debug.Log("today Plan Num " + todayTaskCards.Length);
         scheduleManager.UpdateDayTasks(todayTaskCards, level - 1);
         level++;
+        EnterLevel(level);
     }
-    
-    public bool SetTaskCheck(Slot slot, TaskCardInfo taskCardInfo)
+
+    public bool SetTaskCheck(Slot slot, TaskCardInfo taskCardInfo, bool isInit = false, bool canEdit = true)
     {
         //添加连续任务块处理
-        if (level - 1 != slot.day)
+        if (level - 1 != slot.day && !isInit)
         {
             return false;
         }
@@ -221,9 +249,11 @@ public class GameManager : MonoBehaviour
                 for (int i = 0; i < taskCardInfo.timeBlockNum; i++)
                 {
                     var insertSlot = slots[day][slotID + i];
-                    insertSlot.InsertCard(taskCardInfo, true);
+                    insertSlot.InsertCard(taskCardInfo, false);
+                    insertSlot.canEdit = false;
                 }
-                slots[day][slotID].isEmpty = false;
+                //slots[day][slotID].isEmpty = false;
+                slots[day][slotID].canEdit = canEdit;
                 infoPanel.gameObject.SetActive(false);
                 return true;
             }
@@ -237,6 +267,7 @@ public class GameManager : MonoBehaviour
         {
             //注入信息到Slot中
             slot.InsertCard(taskCardInfo);
+            slot.canEdit = canEdit;
             infoPanel.gameObject.SetActive(false);
             return true;
         }

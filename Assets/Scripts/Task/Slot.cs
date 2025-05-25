@@ -17,6 +17,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
     public bool isEmpty = true;
 
     private Image slotImage;
+    public bool canEdit = true;
     private bool isEditing = false;
     private void Awake()
     {
@@ -24,10 +25,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
         infoPanel = GameManager.Instance.slotInfoPanel;
     }
 
-    public void InsertCard(TaskCardInfo info, bool isFirst = false)
+    public void InsertCard(TaskCardInfo info, bool isEmpty = false)
     {
         taskCardInfo = info;
-        isEmpty = isFirst;
+        this.isEmpty = isEmpty;
         Color newColor = taskCardInfo.cardColor;
         newColor.a = 1f;
         slotImage.color = newColor;
@@ -56,6 +57,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (isEmpty) return;
+        if (!canEdit) return;
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             CancelCardInsertion();
@@ -82,6 +84,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
             var insertedSlot = GameManager.Instance.slots[x][y + i];
             insertedSlot.isEditing = false;
             insertedSlot.isEmpty = true;
+            insertedSlot.canEdit = true;
             insertedSlot.taskCardInfo = new TaskCardInfo();
             insertedSlot.slotImage.color = Color.white;
             //上传的TimeSlot也要改
