@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
     //维护一个未完成的任务卡片列表
     public List<TaskCardInfo> taskCards;
     //今日已安排的任务卡片数组
-    public TimeSlot[] todayTaskCards;
+    public TimeSlot[][] todayTaskCards;
     public int level = 1;
 
     // 公共访问器
@@ -64,13 +64,6 @@ public class GameManager : MonoBehaviour
 
         // 设置实例
         _instance = this;
-
-        todayTaskCards = new TimeSlot[12];
-        for (int i = 0; i < todayTaskCards.Length; i++)
-        {
-            todayTaskCards[i] = new TimeSlot();
-            Debug.Log($"{todayTaskCards[i].taskName} initialized.");
-        }
 
         // 防止场景切换时被销毁
         DontDestroyOnLoad(gameObject);
@@ -128,6 +121,21 @@ public class GameManager : MonoBehaviour
         taskCards.Add(taskInfo);
     }
 
+    public void PrintAllTodayTasks()
+    {
+        Debug.Log("Printing all scheduled tasks:");
+        
+        for (int day = 0; day < 7; day++)
+        {
+            Debug.Log($"--- Day {day + 1} ---");
+            for (int slot = 0; slot < 12; slot++)
+            {
+                string taskName = todayTaskCards[day][slot].taskName;
+                Debug.Log($"Day {day} , Slot {slot}: {taskName}");
+            }
+        }
+    }
+
 
 
     // 初始化游戏管理器的方法
@@ -138,6 +146,16 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < gameSlots.transform.childCount; i++)
         {
             slots[i] = new Slot[12];
+        }
+
+        todayTaskCards = new TimeSlot[7][];
+        for (int i = 0; i < 7; i++)
+        {
+            todayTaskCards[i] = new TimeSlot[12];
+            for (int j = 0; j < 12; j++)
+            {
+                todayTaskCards[i][j] = new TimeSlot();
+            }
         }
         InitSlotID();
         InitLoveTasks();
@@ -214,7 +232,7 @@ public class GameManager : MonoBehaviour
     public void StartToday()
     {
         Debug.Log("today Plan Num " + todayTaskCards.Length);
-        scheduleManager.UpdateDayTasks(todayTaskCards, level - 1);
+        scheduleManager.UpdateDayTasks(todayTaskCards[level - 1], level - 1);
         level++;
         //EnterLevel(level);
     }
@@ -236,6 +254,8 @@ public class GameManager : MonoBehaviour
             bool haveSpace = true;
             int day = slot.day;
             int slotID = slot.slotID;
+
+            //检查是否有空间
             for (int i = 0; i < taskCardInfo.timeBlockNum; i++)
             {
                 if (!slots[day][slotID + i].isEmpty)
@@ -244,6 +264,7 @@ public class GameManager : MonoBehaviour
                     break;
                 }
             }
+            //如果有空间，插入任务卡片
             if (haveSpace)
             {
                 for (int i = 0; i < taskCardInfo.timeBlockNum; i++)

@@ -51,7 +51,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
         timeSlot.consumeEnergy = energyDiceNum == 0 ? info.consumeEnergy : energyDiceNum;
         timeSlot.inputPoint = timeSlot.consumeMood + timeSlot.consumeMood;
 
-        GameManager.Instance.todayTaskCards[slotID] = timeSlot;
+        GameManager.Instance.todayTaskCards[day][slotID] = timeSlot;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -90,7 +90,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
             //上传的TimeSlot也要改
             var timeSlot = new TimeSlot();
             timeSlot.taskName = "";
-            GameManager.Instance.todayTaskCards[y + i] = timeSlot;
+            GameManager.Instance.todayTaskCards[day][y + i] = timeSlot;
         }
     }
 
