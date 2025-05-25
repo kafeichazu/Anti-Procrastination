@@ -30,7 +30,7 @@ public class InfoPanel : MonoBehaviour
     {
         this.taskCardInfo = taskCardInfo;
         // 显示任务信息
-        taskName.text = taskCardInfo.fixedTaskName;
+        taskName.text = taskCardInfo.fixedTaskName == ""? taskCardInfo.fixedTaskName : taskCardInfo.scheduledTaskName;
         timeRequest.text = taskCardInfo.timeBlockNum.ToString();
         passPoint.text = taskCardInfo.successPoint.ToString();
         //taskDescription.text = taskCardInfo.scheduledTask;
