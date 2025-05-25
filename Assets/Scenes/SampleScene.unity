@@ -2956,7 +2956,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attributeManager: {fileID: 359182771}
   scheduleManager: {fileID: 742608157}
-  scheduleManager: {fileID: 0}
   gameSlots: {fileID: 1232302473}
   infoPanel: {fileID: 8914336204263786785}
   slotInfoPanel: {fileID: 973742344}
@@ -2964,6 +2963,7 @@ MonoBehaviour:
   Content: {fileID: 1665794141}
   taskDataBase: {fileID: 11400000, guid: 351f4a6d2cf0a5a41bd5e0c6964440a3, type: 2}
   levelDataBase: {fileID: 11400000, guid: bdb16a08b08cd414ba1fabc0c2dc1e4d, type: 2}
+  fixedDataBase: {fileID: 11400000, guid: 297513a0d72e8884c9f6e94ad8618304, type: 2}
   taskCards: []
   todayTaskCards: []
   level: 1
