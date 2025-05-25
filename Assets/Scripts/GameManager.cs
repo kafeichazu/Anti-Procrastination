@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     //今日已安排的任务卡片数组
     public TimeSlot[][] todayTaskCards;
     public int level = 1;
-    
+
     //正在安排任务卡片的骰子分配
     public bool isPlanDice = false;
 
@@ -242,6 +242,7 @@ public class GameManager : MonoBehaviour
 
     public bool SetTaskCheck(Slot slot, TaskCardInfo taskCardInfo, bool isInit = false, bool canEdit = true)
     {
+        Debug.Log($"SetTaskCheck: day{slot.day} slotID{slot.slotID} taskCardInfo.timeBlockNum{taskCardInfo.timeBlockNum}");
         //添加连续任务块处理
         if (level - 1 != slot.day && !isInit)
         {
@@ -287,7 +288,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        else if (taskCardInfo.timeBlockIndex == 1)
+        else if (taskCardInfo.timeBlockNum == 1)
         {
             //注入信息到Slot中
             slot.InsertCard(taskCardInfo);
