@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public AttributeManager attributeManager;
     public ScheduleManager scheduleManager;
     public GameObject gameSlots;
+    public Slot[][] slots;
 
     //懒得写UIManager了，暂时用这个顶顶
     public GameObject infoPanel;
@@ -121,6 +122,11 @@ public class GameManager : MonoBehaviour
     private void InitGameManager()
     {
         Debug.Log("GameManager initialized!");
+        slots = new Slot[gameSlots.transform.childCount][];
+        for (int i = 0; i < gameSlots.transform.childCount; i++)
+        {
+            slots[i] = new Slot[12];
+        }
         InitSlotID();
     }
 
@@ -133,12 +139,14 @@ public class GameManager : MonoBehaviour
             for (int j = 0; j < daySlots.transform.childCount; j++)
             {
                 GameObject gameSlot = daySlots.transform.GetChild(j).gameObject;
+                slots[i][j] = gameSlot.GetComponent<Slot>();
                 gameSlot.GetComponent<Slot>().day = i;
                 gameSlot.GetComponent<Slot>().slotID = j;
                 gameSlot.gameObject.name = i + "_" + j;
             }
             daySlots.gameObject.name = i.ToString();
         }
+        
     }
 
 

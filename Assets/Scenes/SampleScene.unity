@@ -2955,6 +2955,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributeManager: {fileID: 359182771}
+  scheduleManager: {fileID: 742608157}
   gameSlots: {fileID: 1232302473}
   infoPanel: {fileID: 8914336204263786785}
   slotInfoPanel: {fileID: 973742344}
@@ -2964,7 +2965,6 @@ MonoBehaviour:
   levelDataBase: {fileID: 11400000, guid: bdb16a08b08cd414ba1fabc0c2dc1e4d, type: 2}
   taskCards: []
   todayTaskCards: []
-  todaySlots: []
   level: 1
 --- !u!4 &453325458
 Transform:

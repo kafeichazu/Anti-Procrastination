@@ -24,10 +24,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
         infoPanel = GameManager.Instance.slotInfoPanel;
     }
 
-    public void InsertCard(TaskCardInfo info)
+    public void InsertCard(TaskCardInfo info, bool isFirst = false)
     {
         taskCardInfo = info;
-        isEmpty = false;
+        isEmpty = isFirst;
         Color newColor = taskCardInfo.cardColor;
         newColor.a = 1f;
         slotImage.color = newColor;
@@ -58,12 +58,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
         if (isEmpty) return;
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            isEditing = false;
-            infoPanel.SetActive(false);
-            GameManager.Instance.InstantiateTaskCard(taskCardInfo);
-            isEmpty = true;
-            taskCardInfo = new TaskCardInfo();
-            slotImage.color = Color.white;
+            CancelCardInsertion();
         }
         else if (eventData.button == PointerEventData.InputButton.Left)
         {
@@ -71,7 +66,29 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
             infoPanel.GetComponent<InfoPanel>().slot = this;
             ShowInfo();
         }
+    }
 
+    public void CancelCardInsertion()
+    {
+        infoPanel.SetActive(false);
+        GameManager.Instance.InstantiateTaskCard(taskCardInfo);
+        //isEditing = false;
+        //isEmpty = true;
+        int x = day;
+        int y = slotID;
+        int timeNum = taskCardInfo.timeBlockNum;
+        for (int i = 0; i < timeNum; i++)
+        {
+            var insertedSlot = GameManager.Instance.slots[x][y + i];
+            insertedSlot.isEditing = false;
+            insertedSlot.isEmpty = true;
+            insertedSlot.taskCardInfo = new TaskCardInfo();
+            insertedSlot.slotImage.color = Color.white;
+            //上传的TimeSlot也要改
+            var timeSlot = new TimeSlot();
+            timeSlot.taskName = "";
+            GameManager.Instance.todayTaskCards[y + i] = timeSlot;
+        }
     }
 
     //如果有包含任务，显示信息

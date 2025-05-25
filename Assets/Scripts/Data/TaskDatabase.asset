@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskPools:
   - taskID: 0
+    taskType: 0
+    day: 0
+    timeBlockIndex: 0
     cardColor: {r: 0.93207544, g: 0.34996784, b: 0.34996784, a: 0}
-    fixedTask: 
-    scheduledTask: 
-    timeBlockNum: 0
+    fixedTaskName: dkk
+    scheduledTaskName: 
+    timeBlockNum: 3
     successPoint: 0
     canAddMood: 0
     canAddEnergy: 0
