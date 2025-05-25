@@ -13,13 +13,42 @@ MonoBehaviour:
   m_Name: LevelFixedTasksDatabase
   m_EditorClassIdentifier: 
   levelData:
-  - taskCards:
-    - levelEnergy: 0
-      levelMood: 0
-      taskCards: 0
-  - taskCards: []
-  - taskCards: []
-  - taskCards: []
-  - taskCards: []
-  - taskCards: []
-  - taskCards: []
+  - taskInOneDay:
+    - slotID: 5
+      taskCardID: 0
+    - slotID: 10
+      taskCardID: 9
+  - taskInOneDay:
+    - slotID: 2
+      taskCardID: 1
+    - slotID: 5
+      taskCardID: 2
+    - slotID: 7
+      taskCardID: 10
+  - taskInOneDay:
+    - slotID: 0
+      taskCardID: 3
+    - slotID: 2
+      taskCardID: 11
+    - slotID: 7
+      taskCardID: 4
+  - taskInOneDay:
+    - slotID: 4
+      taskCardID: 12
+    - slotID: 6
+      taskCardID: 5
+    - slotID: 10
+      taskCardID: 6
+  - taskInOneDay:
+    - slotID: 0
+      taskCardID: 7
+    - slotID: 6
+      taskCardID: 13
+  - taskInOneDay:
+    - slotID: 2
+      taskCardID: 8
+    - slotID: 10
+      taskCardID: 14
+  - taskInOneDay:
+    - slotID: 6
+      taskCardID: 15
