@@ -54,7 +54,8 @@ public class ImageDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerE
         {
             if (result.gameObject.CompareTag("Slot"))
             {
-                haveSpace = taskCard.SetTaskCheck(result.gameObject, taskCard.taskCardInfo);
+                Slot slot = result.gameObject.GetComponent<Slot>();
+                haveSpace = GameManager.Instance.SetTaskCheck(slot, taskCard.taskCardInfo);
                 isOverSlot = true;
                 break;
             }
@@ -64,6 +65,10 @@ public class ImageDrag : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerE
         {
             this.transform.SetParent(scrollRect.content);
             this.transform.SetAsFirstSibling();
+        }
+        else
+        { 
+            Destroy(gameObject);
         }
         
     }

@@ -141,9 +141,8 @@ public class GameManager : MonoBehaviour
             foreach (var task in levelFixedTasks.taskInOneDay)
             {
                 TaskCardInfo taskInfo = taskDataBase.GetTaskById(task.taskCardID);
-                InstantiateTaskCard(taskInfo);
             }
-            
+
         }
     }
 
@@ -190,6 +189,61 @@ public class GameManager : MonoBehaviour
         Debug.Log("today Plan Num " + todayTaskCards.Length);
         scheduleManager.UpdateDayTasks(todayTaskCards, level - 1);
         level++;
+    }
+    
+    public bool SetTaskCheck(Slot slot, TaskCardInfo taskCardInfo)
+    {
+        //添加连续任务块处理
+        if (level - 1 != slot.day)
+        {
+            return false;
+        }
+        if (!slot.isEmpty)
+        {
+            return false;
+        }
+
+        if (taskCardInfo.timeBlockNum > 1)
+        {
+            bool haveSpace = true;
+            int day = slot.day;
+            int slotID = slot.slotID;
+            for (int i = 0; i < taskCardInfo.timeBlockNum; i++)
+            {
+                if (!slots[day][slotID + i].isEmpty)
+                {
+                    haveSpace = false;
+                    break;
+                }
+            }
+            if (haveSpace)
+            {
+                for (int i = 0; i < taskCardInfo.timeBlockNum; i++)
+                {
+                    var insertSlot = slots[day][slotID + i];
+                    insertSlot.InsertCard(taskCardInfo, true);
+                }
+                slots[day][slotID].isEmpty = false;
+                infoPanel.gameObject.SetActive(false);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        else if (taskCardInfo.timeBlockIndex == 1)
+        {
+            //注入信息到Slot中
+            slot.InsertCard(taskCardInfo);
+            infoPanel.gameObject.SetActive(false);
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
 }
