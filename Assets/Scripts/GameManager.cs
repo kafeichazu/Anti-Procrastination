@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour
     public TaskData taskDataBase;
     //关卡数据
     public LevelData levelDataBase;
+    //固定任务数据
+    public LevelFixedTasksDatabase fixedDataBase;
 
 
     //维护一个未完成的任务卡片列表
@@ -72,8 +74,7 @@ public class GameManager : MonoBehaviour
         // 防止场景切换时被销毁
         DontDestroyOnLoad(gameObject);
 
-        // 初始化游戏管理器
-        InitGameManager();
+        InitGameData();
 
         EnterLevel(1);
     }
@@ -119,7 +120,7 @@ public class GameManager : MonoBehaviour
 
 
     // 初始化游戏管理器的方法
-    private void InitGameManager()
+    private void InitGameData()
     {
         Debug.Log("GameManager initialized!");
         slots = new Slot[gameSlots.transform.childCount][];
@@ -128,8 +129,27 @@ public class GameManager : MonoBehaviour
             slots[i] = new Slot[12];
         }
         InitSlotID();
+        InitFixedTasks();
+        InitLoveTasks();
     }
 
+    public void InitFixedTasks()
+    {
+        // for (int i = 0; i < fixedDataBase.levelData.Length; i++)
+        // {
+        //     LevelFixedTasks levelFixedTasks = fixedDataBase.levelFixedTasks[i];
+        //     foreach (int taskId in levelFixedTasks.taskCards)
+        //     {
+        //         TaskCardInfo taskInfo = taskDataBase.GetTaskById(taskId);
+        //         InstantiateTaskCard(taskInfo);
+        //     }
+        // }
+    }
+
+    public void InitLoveTasks()
+    {
+
+    }
 
     private void InitSlotID()
     {
@@ -146,7 +166,7 @@ public class GameManager : MonoBehaviour
             }
             daySlots.gameObject.name = i.ToString();
         }
-        
+
     }
 
 

@@ -8,8 +8,8 @@ public class LevelFixedTasksDatabase : ScriptableObject
     [System.Serializable]
     public class oneFixedTasksData
     {
-        public int levelEnergy;
-        public int levelMood;
+        //public int Day;
+        public int slotID;
         public int taskCards;// 任务卡片ID列表
     }
     [System.Serializable]
