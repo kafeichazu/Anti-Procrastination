@@ -33,6 +33,9 @@ public class GameManager : MonoBehaviour
     //今日已安排的任务卡片数组
     public TimeSlot[][] todayTaskCards;
     public int level = 1;
+    
+    //正在安排任务卡片的骰子分配
+    public bool isPlanDice = false;
 
     // 公共访问器
     public static GameManager Instance

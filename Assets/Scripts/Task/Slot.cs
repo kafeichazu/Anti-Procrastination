@@ -19,6 +19,10 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
     private Image slotImage;
     public bool canEdit = true;
     private bool isEditing = false;
+
+    public int moodDiceNum;
+    public int energyDiceNum;
+    
     private void Awake()
     {
         slotImage = GetComponent<Image>();
@@ -27,6 +31,8 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
 
     public void InsertCard(TaskCardInfo info, bool isEmpty = false)
     {
+        moodDiceNum = info.consumeMood;
+        energyDiceNum = info.consumeEnergy;
         taskCardInfo = info;
         this.isEmpty = isEmpty;
         Color newColor = taskCardInfo.cardColor;
@@ -66,6 +72,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
         {
             isEditing = true;
             infoPanel.GetComponent<InfoPanel>().slot = this;
+            GameManager.Instance.isPlanDice = true;
             ShowInfo();
         }
     }
@@ -99,12 +106,12 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
     {
         //显示任务信息面板，并且可以调整骰子
         infoPanel.SetActive(true);
-        infoPanel.GetComponent<InfoPanel>().ShowInfo(taskCardInfo);
+        infoPanel.GetComponent<InfoPanel>().ShowInfo(taskCardInfo, moodDiceNum, energyDiceNum);
     }
-
 
     public void OnPointerEnter(PointerEventData eventData)
     {
+        if (GameManager.Instance.isPlanDice) return;
         if (!isEmpty)
         {
             ShowInfo();
@@ -114,6 +121,7 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
     public void OnPointerExit(PointerEventData eventData)
     {
         if (isEmpty) return;
+        if (GameManager.Instance.isPlanDice) return;
         if (!isEditing)
         {
             infoPanel.SetActive(false);

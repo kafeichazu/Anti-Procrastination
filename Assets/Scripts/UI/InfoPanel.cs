@@ -26,7 +26,7 @@ public class InfoPanel : MonoBehaviour
     public int moodDiceNum;
     public int energyDiceNum;
 
-    public void ShowInfo(TaskCardInfo taskCardInfo)
+    public void ShowInfo(TaskCardInfo taskCardInfo,int moodDN = -1,int energyDN = -1)
     {
         this.taskCardInfo = taskCardInfo;
         // 显示任务信息
@@ -34,8 +34,8 @@ public class InfoPanel : MonoBehaviour
         timeRequest.text = taskCardInfo.timeBlockNum.ToString();
         passPoint.text = taskCardInfo.successPoint.ToString();
         //taskDescription.text = taskCardInfo.scheduledTask;
-        moodNum.text = taskCardInfo.consumeMood.ToString();
-        energyNum.text = taskCardInfo.consumeEnergy.ToString();
+        moodNum.text = moodDN >= 0? moodDN.ToString() : taskCardInfo.consumeMood.ToString();
+        energyNum.text = energyDN >= 0? energyDN.ToString() : taskCardInfo.consumeEnergy.ToString();
 
         //使用量默认为推荐
         moodDiceNum = taskCardInfo.consumeMood;
@@ -46,6 +46,7 @@ public class InfoPanel : MonoBehaviour
     public void IncreaseMood()
     {
         moodDiceNum++;
+        slot.moodDiceNum++;
         totalDiceNum++;
         moodNum.text = moodDiceNum.ToString();
         RefreshButton();
@@ -54,6 +55,7 @@ public class InfoPanel : MonoBehaviour
     {
         if (moodDiceNum > taskCardInfo.consumeMood)
         {
+            slot.moodDiceNum--;
             moodDiceNum--;
             totalDiceNum--;
             moodNum.text = moodDiceNum.ToString();
@@ -63,6 +65,7 @@ public class InfoPanel : MonoBehaviour
 
     public void IncreaseEnergy()
     {
+        slot.energyDiceNum++;
         energyDiceNum++;
         totalDiceNum++;
         energyNum.text = energyDiceNum.ToString();
@@ -72,6 +75,7 @@ public class InfoPanel : MonoBehaviour
     {
         if (energyDiceNum > taskCardInfo.consumeEnergy)
         {
+            slot.energyDiceNum--;
             energyDiceNum--;
             totalDiceNum--;
             energyNum.text = energyDiceNum.ToString();
@@ -105,6 +109,7 @@ public class InfoPanel : MonoBehaviour
         gameObject.SetActive(false);
         //填充信息到本日任务列表中
         slot.InsertCardArray(taskCardInfo, moodDiceNum, energyDiceNum);
+        GameManager.Instance.isPlanDice = false;
     }
 
 }
