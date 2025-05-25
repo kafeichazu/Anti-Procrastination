@@ -76,6 +76,7 @@ public class ScheduleManager : MonoBehaviour
     // 整理合并
     public void arrangeDayPlan(int index)
     {
+        Debug.Log("整合index: " + index);
         if (index < 0 || index >= weekSchedule.Length)
         {
             Debug.LogWarning("Index 超出 weekSchedule 范围");
