@@ -18,7 +18,7 @@ MonoBehaviour:
     day: 0
     timeBlockIndex: 5
     cardColor: {r: 0.34901956, g: 0.7189195, b: 0.93333334, a: 0}
-    fixedTaskName: Math Lecture
+    fixedTaskName: "\u6570\u5B66\u8BFE"
     scheduledTaskName: 
     timeBlockNum: 4
     successPoint: 2
@@ -31,7 +31,7 @@ MonoBehaviour:
     day: 1
     timeBlockIndex: 2
     cardColor: {r: 0.34901956, g: 0.7189195, b: 0.93333334, a: 0}
-    fixedTaskName: Eng Lecture
+    fixedTaskName: "\u82F1\u8BED\u8BFE"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 1
@@ -44,7 +44,7 @@ MonoBehaviour:
     day: 1
     timeBlockIndex: 5
     cardColor: {r: 0.34901956, g: 0.7189195, b: 0.93333334, a: 0}
-    fixedTaskName: Major Lecture
+    fixedTaskName: "\u4E13\u4E1A\u8BFE"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 1
@@ -57,7 +57,7 @@ MonoBehaviour:
     day: 2
     timeBlockIndex: 0
     cardColor: {r: 0.34901956, g: 0.7189195, b: 0.93333334, a: 0}
-    fixedTaskName: Major Lecture
+    fixedTaskName: "\u4E13\u4E1A\u8BFE"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 1
@@ -70,7 +70,7 @@ MonoBehaviour:
     day: 2
     timeBlockIndex: 7
     cardColor: {r: 0.34901956, g: 0.7189195, b: 0.93333334, a: 0}
-    fixedTaskName: Math Lecture
+    fixedTaskName: "\u6570\u5B66\u8BFE"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 1
@@ -83,7 +83,7 @@ MonoBehaviour:
     day: 3
     timeBlockIndex: 6
     cardColor: {r: 0.34901956, g: 0.7189195, b: 0.93333334, a: 0}
-    fixedTaskName: Meeting
+    fixedTaskName: "\u7EC4\u4F1A"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 1
@@ -96,7 +96,7 @@ MonoBehaviour:
     day: 3
     timeBlockIndex: 10
     cardColor: {r: 0.34901956, g: 0.7189195, b: 0.93333334, a: 0}
-    fixedTaskName: GE Lecture
+    fixedTaskName: "\u6C34\u8BFE"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 1
@@ -109,7 +109,7 @@ MonoBehaviour:
     day: 4
     timeBlockIndex: 0
     cardColor: {r: 0.34901956, g: 0.7189195, b: 0.93333334, a: 0}
-    fixedTaskName: Major Lecture
+    fixedTaskName: "\u4E13\u4E1A\u8BFE"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
     day: 5
     timeBlockIndex: 2
     cardColor: {r: 0.34901956, g: 0.7189195, b: 0.93333334, a: 0}
-    fixedTaskName: Part-time Job
+    fixedTaskName: "\u517C\u804C"
     scheduledTaskName: 
     timeBlockNum: 3
     successPoint: 2
@@ -135,7 +135,7 @@ MonoBehaviour:
     day: 0
     timeBlockIndex: 10
     cardColor: {r: 1, g: 0.6179246, b: 0.7991227, a: 0}
-    fixedTaskName: New Restaurant
+    fixedTaskName: "\u65B0\u5F00\u7684\u9910\u5385"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 2
@@ -148,7 +148,7 @@ MonoBehaviour:
     day: 1
     timeBlockIndex: 7
     cardColor: {r: 1, g: 0.6179246, b: 0.7991227, a: 0}
-    fixedTaskName: Library
+    fixedTaskName: "\u56FE\u4E66\u9986"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 2
@@ -161,7 +161,7 @@ MonoBehaviour:
     day: 2
     timeBlockIndex: 2
     cardColor: {r: 1, g: 0.6179246, b: 0.7991227, a: 0}
-    fixedTaskName: Cafe
+    fixedTaskName: "\u5496\u5561\u5385"
     scheduledTaskName: 
     timeBlockNum: 1
     successPoint: 2
@@ -174,7 +174,7 @@ MonoBehaviour:
     day: 3
     timeBlockIndex: 4
     cardColor: {r: 1, g: 0.6179246, b: 0.7991227, a: 0}
-    fixedTaskName: Lakeside
+    fixedTaskName: "\u6E56\u8FB9"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 2
@@ -187,7 +187,7 @@ MonoBehaviour:
     day: 4
     timeBlockIndex: 6
     cardColor: {r: 1, g: 0.6179246, b: 0.7991227, a: 0}
-    fixedTaskName: Gallery
+    fixedTaskName: "\u753B\u5C55"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 2
@@ -200,7 +200,7 @@ MonoBehaviour:
     day: 5
     timeBlockIndex: 10
     cardColor: {r: 1, g: 0.6179246, b: 0.7991227, a: 0}
-    fixedTaskName: Cinema
+    fixedTaskName: "\u7535\u5F71\u9662"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 3
@@ -213,7 +213,7 @@ MonoBehaviour:
     day: 6
     timeBlockIndex: 6
     cardColor: {r: 1, g: 0.6179246, b: 0.7991227, a: 0}
-    fixedTaskName: Shopping
+    fixedTaskName: "\u901B\u8857"
     scheduledTaskName: 
     timeBlockNum: 3
     successPoint: 4
@@ -227,7 +227,7 @@ MonoBehaviour:
     timeBlockIndex: 0
     cardColor: {r: 0.9622642, g: 0.9235323, b: 0.7126202, a: 0}
     fixedTaskName: 
-    scheduledTaskName: Read Paper
+    scheduledTaskName: "\u770B\u8BBA\u6587"
     timeBlockNum: 2
     successPoint: 2
     canAddMood: 1
@@ -240,7 +240,7 @@ MonoBehaviour:
     timeBlockIndex: 0
     cardColor: {r: 0.9622642, g: 0.9235323, b: 0.7126202, a: 0}
     fixedTaskName: 
-    scheduledTaskName: Homework
+    scheduledTaskName: "\u4F5C\u4E1A"
     timeBlockNum: 1
     successPoint: 1
     canAddMood: 1
@@ -253,7 +253,7 @@ MonoBehaviour:
     timeBlockIndex: 0
     cardColor: {r: 0.9622642, g: 0.9235323, b: 0.7126202, a: 0}
     fixedTaskName: 
-    scheduledTaskName: Run Errands
+    scheduledTaskName: "\u4E70\u4E1C\u897F"
     timeBlockNum: 1
     successPoint: 1
     canAddMood: 0
@@ -266,7 +266,7 @@ MonoBehaviour:
     timeBlockIndex: 0
     cardColor: {r: 0.9622642, g: 0.9235323, b: 0.7126202, a: 0}
     fixedTaskName: 
-    scheduledTaskName: Course Project
+    scheduledTaskName: "\u5927\u4F5C\u4E1A"
     timeBlockNum: 2
     successPoint: 2
     canAddMood: 1
@@ -279,7 +279,7 @@ MonoBehaviour:
     timeBlockIndex: 0
     cardColor: {r: 0.9622642, g: 0.9235323, b: 0.7126202, a: 0}
     fixedTaskName: 
-    scheduledTaskName: Laundary
+    scheduledTaskName: "\u6D17\u8863\u670D"
     timeBlockNum: 1
     successPoint: 1
     canAddMood: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
     timeBlockIndex: 0
     cardColor: {r: 0.9622642, g: 0.9235323, b: 0.7126202, a: 0}
     fixedTaskName: 
-    scheduledTaskName: Mobile Game Weekly Task
+    scheduledTaskName: "\u624B\u6E38\u6D3B\u52A8"
     timeBlockNum: 1
     successPoint: 1
     canAddMood: 1
@@ -305,7 +305,7 @@ MonoBehaviour:
     timeBlockIndex: 0
     cardColor: {r: 0.9622642, g: 0.9235323, b: 0.7126202, a: 0}
     fixedTaskName: 
-    scheduledTaskName: Play Computer Game with Friends
+    scheduledTaskName: "\u8DDF\u670B\u53CB\u6253\u6E38\u620F"
     timeBlockNum: 2
     successPoint: 2
     canAddMood: 1
@@ -318,7 +318,7 @@ MonoBehaviour:
     timeBlockIndex: 0
     cardColor: {r: 0.9622642, g: 0.9235323, b: 0.7126202, a: 0}
     fixedTaskName: 
-    scheduledTaskName: Prepare for Presentation
+    scheduledTaskName: "\u505APPT"
     timeBlockNum: 2
     successPoint: 3
     canAddMood: 1
