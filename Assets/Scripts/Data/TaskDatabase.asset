@@ -21,7 +21,7 @@ MonoBehaviour:
     fixedTaskName: "\u6570\u5B66\u8BFE"
     scheduledTaskName: 
     timeBlockNum: 4
-    successPoint: 2
+    successPoint: 3
     canAddMood: 0
     canAddEnergy: 0
     consumeMood: 2
@@ -47,7 +47,7 @@ MonoBehaviour:
     fixedTaskName: "\u4E13\u4E1A\u8BFE"
     scheduledTaskName: 
     timeBlockNum: 2
-    successPoint: 1
+    successPoint: 2
     canAddMood: 0
     canAddEnergy: 0
     consumeMood: 1
@@ -60,7 +60,7 @@ MonoBehaviour:
     fixedTaskName: "\u4E13\u4E1A\u8BFE"
     scheduledTaskName: 
     timeBlockNum: 2
-    successPoint: 1
+    successPoint: 2
     canAddMood: 0
     canAddEnergy: 0
     consumeMood: 1
@@ -86,10 +86,10 @@ MonoBehaviour:
     fixedTaskName: "\u7EC4\u4F1A"
     scheduledTaskName: 
     timeBlockNum: 2
-    successPoint: 1
+    successPoint: 3
     canAddMood: 0
     canAddEnergy: 0
-    consumeMood: 1
+    consumeMood: 3
     consumeEnergy: 2
   - taskID: 6
     taskType: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
     fixedTaskName: "\u4E13\u4E1A\u8BFE"
     scheduledTaskName: 
     timeBlockNum: 2
-    successPoint: 1
+    successPoint: 2
     canAddMood: 0
     canAddEnergy: 0
     consumeMood: 2
@@ -128,8 +128,8 @@ MonoBehaviour:
     successPoint: 2
     canAddMood: 0
     canAddEnergy: 0
-    consumeMood: 2
-    consumeEnergy: 2
+    consumeMood: 3
+    consumeEnergy: 3
   - taskID: 9
     taskType: 1
     day: 0
@@ -141,7 +141,7 @@ MonoBehaviour:
     successPoint: 2
     canAddMood: 1
     canAddEnergy: 1
-    consumeMood: 0
+    consumeMood: 2
     consumeEnergy: 3
   - taskID: 10
     taskType: 1
@@ -154,7 +154,7 @@ MonoBehaviour:
     successPoint: 2
     canAddMood: 1
     canAddEnergy: 1
-    consumeMood: 2
+    consumeMood: 3
     consumeEnergy: 1
   - taskID: 11
     taskType: 1
@@ -167,21 +167,21 @@ MonoBehaviour:
     successPoint: 2
     canAddMood: 1
     canAddEnergy: 1
-    consumeMood: 2
+    consumeMood: 3
     consumeEnergy: 1
   - taskID: 12
     taskType: 1
     day: 3
     timeBlockIndex: 4
     cardColor: {r: 1, g: 0.6179246, b: 0.7991227, a: 0}
-    fixedTaskName: "\u6E56\u8FB9"
+    fixedTaskName: "\u6E56\u8FB9\u5199\u751F"
     scheduledTaskName: 
     timeBlockNum: 2
     successPoint: 2
     canAddMood: 1
     canAddEnergy: 1
-    consumeMood: 1
-    consumeEnergy: 2
+    consumeMood: 2
+    consumeEnergy: 4
   - taskID: 13
     taskType: 1
     day: 4
@@ -193,8 +193,8 @@ MonoBehaviour:
     successPoint: 2
     canAddMood: 1
     canAddEnergy: 1
-    consumeMood: 1
-    consumeEnergy: 2
+    consumeMood: 2
+    consumeEnergy: 3
   - taskID: 14
     taskType: 1
     day: 5
@@ -206,7 +206,7 @@ MonoBehaviour:
     successPoint: 3
     canAddMood: 1
     canAddEnergy: 1
-    consumeMood: 1
+    consumeMood: 2
     consumeEnergy: 2
   - taskID: 15
     taskType: 1
@@ -232,7 +232,7 @@ MonoBehaviour:
     successPoint: 2
     canAddMood: 1
     canAddEnergy: 1
-    consumeMood: 2
+    consumeMood: 1
     consumeEnergy: 2
   - taskID: 17
     taskType: 2
@@ -267,11 +267,11 @@ MonoBehaviour:
     cardColor: {r: 0.9622642, g: 0.9235323, b: 0.7126202, a: 0}
     fixedTaskName: 
     scheduledTaskName: "\u5927\u4F5C\u4E1A"
-    timeBlockNum: 2
-    successPoint: 2
+    timeBlockNum: 3
+    successPoint: 3
     canAddMood: 1
     canAddEnergy: 1
-    consumeMood: 1
+    consumeMood: 2
     consumeEnergy: 2
   - taskID: 20
     taskType: 2
@@ -298,7 +298,7 @@ MonoBehaviour:
     canAddMood: 1
     canAddEnergy: 0
     consumeMood: 1
-    consumeEnergy: 0
+    consumeEnergy: 1
   - taskID: 22
     taskType: 2
     day: 0
@@ -307,11 +307,11 @@ MonoBehaviour:
     fixedTaskName: 
     scheduledTaskName: "\u8DDF\u670B\u53CB\u6253\u6E38\u620F"
     timeBlockNum: 2
-    successPoint: 2
+    successPoint: 1
     canAddMood: 1
     canAddEnergy: 0
-    consumeMood: 3
-    consumeEnergy: 0
+    consumeMood: 1
+    consumeEnergy: 2
   - taskID: 23
     taskType: 2
     day: 0
@@ -320,7 +320,7 @@ MonoBehaviour:
     fixedTaskName: 
     scheduledTaskName: "\u505APPT"
     timeBlockNum: 2
-    successPoint: 3
+    successPoint: 2
     canAddMood: 1
     canAddEnergy: 1
     consumeMood: 2

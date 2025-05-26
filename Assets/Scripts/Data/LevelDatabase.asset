@@ -13,24 +13,24 @@ MonoBehaviour:
   m_Name: LevelDatabase
   m_EditorClassIdentifier: 
   levelData:
-  - levelEnergy: 10
-    levelMood: 10
+  - levelEnergy: 8
+    levelMood: 8
     taskCards: 100000001100000015000000
-  - levelEnergy: 10
-    levelMood: 10
+  - levelEnergy: 8
+    levelMood: 8
     taskCards: 130000001400000016000000
-  - levelEnergy: 10
-    levelMood: 1
+  - levelEnergy: 8
+    levelMood: 8
     taskCards: 100000001200000017000000
-  - levelEnergy: 1
-    levelMood: 1
+  - levelEnergy: 8
+    levelMood: 8
     taskCards: 1100000013000000
-  - levelEnergy: 1
-    levelMood: 1
+  - levelEnergy: 8
+    levelMood: 8
     taskCards: 110000001400000016000000
-  - levelEnergy: 1
-    levelMood: 1
+  - levelEnergy: 8
+    levelMood: 8
     taskCards: 100000001700000012000000
-  - levelEnergy: 1
-    levelMood: 1
+  - levelEnergy: 8
+    levelMood: 8
     taskCards: 1300000017000000
