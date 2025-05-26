@@ -3096,6 +3096,7 @@ MonoBehaviour:
   slotInfoPanel: {fileID: 973742344}
   Card: {fileID: 4577510952697434929, guid: b5c71f43555f99f41b93a96263768242, type: 3}
   Content: {fileID: 1665794141}
+  startButton: {fileID: 0}
   taskDataBase: {fileID: 11400000, guid: 351f4a6d2cf0a5a41bd5e0c6964440a3, type: 2}
   levelDataBase: {fileID: 11400000, guid: bdb16a08b08cd414ba1fabc0c2dc1e4d, type: 2}
   fixedDataBase: {fileID: 11400000, guid: 297513a0d72e8884c9f6e94ad8618304, type: 2}
@@ -9700,10 +9701,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
