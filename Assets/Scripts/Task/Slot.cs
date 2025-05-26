@@ -66,10 +66,12 @@ public class Slot : MonoBehaviour, IPointerClickHandler , IPointerEnterHandler, 
         if (!canEdit) return;
         if (eventData.button == PointerEventData.InputButton.Right)
         {
+            GameManager.Instance.startButton.SetActive(true);
             CancelCardInsertion();
         }
         else if (eventData.button == PointerEventData.InputButton.Left)
         {
+            GameManager.Instance.startButton.SetActive(false);
             isEditing = true;
             infoPanel.GetComponent<InfoPanel>().slot = this;
             GameManager.Instance.isPlanDice = true;

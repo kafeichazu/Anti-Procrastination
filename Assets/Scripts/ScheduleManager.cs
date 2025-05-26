@@ -154,8 +154,10 @@ public class ScheduleManager : MonoBehaviour
 
             if (currentExecuteIndex >= arrangedDaySchedule.Count)
             {
+                GameManager.Instance.level++;
                 GameManager.Instance.EnterLevel(GameManager.Instance.level);
                 Debug.Log("所有任务已执行完毕！");
+                GameManager.Instance.startButton.SetActive(true);
                 if (executeButton != null)
                     executeButton.interactable = false;  // 禁用按钮
             }

@@ -107,6 +107,8 @@ public class InfoPanel : MonoBehaviour
     public void Apply()
     {
         gameObject.SetActive(false);
+        GameManager.Instance.startButton.SetActive(true);
+
         //填充信息到本日任务列表中
         slot.InsertCardArray(taskCardInfo, moodDiceNum, energyDiceNum);
         GameManager.Instance.isPlanDice = false;

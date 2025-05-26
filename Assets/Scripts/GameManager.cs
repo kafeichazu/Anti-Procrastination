@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     public GameObject Card;
     //装任务卡片的父物体
     public GameObject Content;
+    public GameObject startButton;
 
     //卡片数据
     public TaskData taskDataBase;
@@ -36,6 +37,7 @@ public class GameManager : MonoBehaviour
 
     //正在安排任务卡片的骰子分配
     public bool isPlanDice = false;
+
 
     // 公共访问器
     public static GameManager Instance
@@ -236,7 +238,9 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("today Plan Num " + todayTaskCards.Length);
         scheduleManager.UpdateDayTasks(todayTaskCards[level - 1], level - 1);
-        level++;
+        startButton.SetActive(false);
+
+        //level++;
         //EnterLevel(level);
     }
 
